@@ -8,9 +8,12 @@ $(document).ready(function () {
         storageBucket: "trainscheduler-20429.appspot.com",
         messagingSenderId: "552869575601",
         appId: "1:552869575601:web:51134180096eae5d"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+
+      var database = firebase.database();
 
 
     var currentTime = moment();
@@ -20,53 +23,60 @@ $(document).ready(function () {
     $("button").on("click", function (event) {
         event.preventDefault();
 
-
+        
+        // Grabbing user input
         var userName = $("#name").val().trim();
-        var trainName = $("#row1").append("<div class='col-md-2'>" + userName + "</div>");
-
-
         var userDestination = $("#destination").val().trim();
-        var destinationName = $("#row1").append("<div class='col-md-2'>" + userDestination + "</div>")
+        var firstTime = $("#trainTime").val().trim();
+        var userFrequency = $("#frequency").val().trim();
+
+
+        // Creating local "temporary" object for holding train data
+        var newTrainInput = {
+            name: userName,
+            destination: userDestination,
+            firstTrainTime: firstTime,
+            frequency: userFrequency
+        };
+
+        // Uploading to databse
+        database.ref().push(newTrainInput);
 
 
         // First user train time   
-        var firstTime = $("#trainTime").val().trim();
         var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-        console.log(firstTimeConverted);
-
-
-        // Frequency input form user
-        var userFrequency = $("#frequency").val().trim();
-        $("#row1").append("<div class='col-md-2'>" + userFrequency + " min</div>");
-
 
         // Current Time
         currentTime = moment();
-        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
-
 
         //Difference between the times
         var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-        console.log("DIFFERENCE IN TIME: " + diffTime);
-
 
         // Time apart(remainder)
         var timeRemainder = diffTime % userFrequency;
-        console.log(timeRemainder);
-
-
-        // Next Train
-        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
-        $("#row1").append("<div class='col-md-2'>" + moment(nextTrain).format("HH:mm") + "</div>");
-
-
 
         // Minute Until Train
         var tMinutesTillTrain = userFrequency - timeRemainder;
-        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-        $("#row1").append("<div class='col-md-2'>" + tMinutesTillTrain + "</div>");
+
+        // Next Train
+        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+
+
+        // Creating the new row
+        var newRow = $("<tr>").append(
+            $("<td>").append(userName),
+            $("<td>").append(userDestination),
+            $("<td>").append(userFrequency + " min"),
+            $("<td>").text((nextTrain).format("HH:mm")),
+            $("<td>").append(tMinutesTillTrain)
+        );
+
+        $("#train-table > tbody").append(newRow);
+
+
+        $("#name").val("");
+        $("#destination").val("");
+        $("#trainTime").val("");
+        $("#frequency").val("");
     })
-
-
 })

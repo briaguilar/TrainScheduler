@@ -45,7 +45,7 @@ header {
 
 
 #clock {
-    margin: 0 auto;
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -62,33 +62,21 @@ h6 {
 }
 
 
-#currentTrain {
+.card-header {
     background-color: rgb(37, 103, 189);
     color: white;
-    font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 
-#currentSchedule {
-    border: 1px solid rgb(37, 103, 189);
+#currentTable {
+    margin: 0 auto;
 }
-
-
-#labels {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid lightgrey;
-}
-
 
 
 #addContainer {
     margin-top: 30px;
     border: 1px solid rgb(37, 103, 189);
+    margin-bottom: 50px;
 }
 
 
