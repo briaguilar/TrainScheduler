@@ -1,0 +1,131 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+
+
+body {
+    font-family: 'Abel', sans-serif;
+}
+
+
+
+header {
+    background-color: rgb(184, 103, 37);
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+h1 {
+    padding-top: 20px;
+    margin-bottom: 15px;
+    font-size: 50px;
+}
+
+
+h6 {
+    padding-bottom: 20px;
+}
+
+
+#currentTrain {
+    background-color: rgb(37, 103, 189);
+    color: white;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+#currentSchedule {
+    border: 1px solid rgb(37, 103, 189);
+}
+
+
+#labels {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid lightgrey;
+}
+
+
+
+#addContainer {
+    margin-top: 30px;
+    border: 1px solid rgb(37, 103, 189);
+}
+
+
+#add {
+    background-color: rgb(37, 103, 189);
+    color: white;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+#trainName {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+#name {
+    height: 35px;
+}
+
+
+#destinationName {
+    font-weight: bold;
+}
+
+#destination {
+    height: 35px;
+}
+
+
+#timeLabel {
+    font-weight: bold;
+}
+
+#trainTime {
+    height: 35px;
+}
+
+
+#frequencyLabel {
+    font-weight: bold;
+}
+
+#frequency {
+    height: 35px;
+}
+
+
+button {
+    margin-bottom: 10px;
+}
