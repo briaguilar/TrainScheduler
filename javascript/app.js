@@ -8,22 +8,26 @@ $(document).ready(function () {
         storageBucket: "trainscheduler-20429.appspot.com",
         messagingSenderId: "552869575601",
         appId: "1:552869575601:web:51134180096eae5d"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
 
-      var database = firebase.database();
+    var database = firebase.database();
 
 
     var currentTime = moment();
     $("#clock").append(moment(currentTime).format("HH:mm"));
 
 
+    
+
+
+
     $("button").on("click", function (event) {
         event.preventDefault();
 
-        
+
         // Grabbing user input
         var userName = $("#name").val().trim();
         var userDestination = $("#destination").val().trim();
@@ -78,5 +82,12 @@ $(document).ready(function () {
         $("#destination").val("");
         $("#trainTime").val("");
         $("#frequency").val("");
+
+
+        database.ref().on("value", function (snapshot) {
+            console.log(userName);
+
+            userName = snapshot.val().userName;
+        })
     })
 })
